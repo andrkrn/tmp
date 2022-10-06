@@ -20,11 +20,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo hi
-      - run: echo "event_name ${{ github.event_name }}""
+      - run: echo "event_name ${{ github.event_name }}"
       - run: echo ${{ github.event.workflow_run.event }}
       - name: student
-        if: github.event.workflow_run.event == 'push' || github.event.inputs.student == 'true'
+        if: >
+          github.event_name == 'push' ||
+          (github.event_name == 'workflow_dispatch' && github.event.inputs.student == 'true')
         run: echo "student, ${{ github.event.inputs.student }}"
       - name: manager
-        if: github.event.workflow_run.event == 'push' || github.event.inputs.manager == 'true'
+        if: >
+          github.event_name == 'push' ||
+          (github.event_name == 'workflow_dispatch' && github.event.inputs.manager == 'true')
         run: echo "manager, ${{ github.event.inputs.manager }}"
