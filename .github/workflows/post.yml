@@ -3,9 +3,22 @@ name: post
 on:
   push:
   workflow_dispatch:
+    inputs:
+      student:
+        type: boolean
+        required: false
+        default: false
+        description: "deploy student app"
+      manager:
+        type: boolean
+        required: false
+        default: false
+        description: "deploy manager app"
 
 jobs:
   echo:
     runs-on: ubuntu-latest
     steps:
       - run: echo hi
+      - run: echo "student, ${{ github.event.inputs.student }}"
+      - run: echo "manager, ${{ github.event.inputs.student }}"
