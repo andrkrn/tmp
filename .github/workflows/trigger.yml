@@ -18,6 +18,7 @@ jobs:
               workflow_id: 'post.yml',
               ref: 'main',
               inputs: {
-                student: "true"
+                student: "true",
+                manager: "false"
               }
             })
