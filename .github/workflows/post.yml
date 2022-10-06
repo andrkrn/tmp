@@ -22,8 +22,8 @@ jobs:
       - run: echo hi
       - run: echo ${{ github.event.workflow_run.event }}
       - name: student
-        if: github.event.workflow_run.event == 'push' || github.event.inputs.student == "true"
+        if: github.event.workflow_run.event == 'push' || github.event.inputs.student == 'true'
         run: echo "student, ${{ github.event.inputs.student }}"
       - name: manager
-        if: github.event.workflow_run.event == 'push' || github.event.inputs.manager == "true"
+        if: github.event.workflow_run.event == 'push' || github.event.inputs.manager == 'true'
         run: echo "manager, ${{ github.event.inputs.manager }}"
